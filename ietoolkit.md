@@ -8,6 +8,7 @@
 基本的には因果推論で使うことがあるコマンド、あとは「ちゃんとフォルダを管理しましょうね」「Git使ってますか？」的なお助けコマンドもあるよ。
 ちなみにietoolkitの双子の兄弟は[iefieldkit](https://github.com/worldbank/iefieldkit)で、これはフィールドワークの各過程で便利なコマンドを提供しているそう。
 さらにちなみに、ietoolkitはStataに関するGitHubのレポのなかで二番目に星の数が多いそう（2020年6月26日時点）で、一番多いのは[Mostly Harmless Econometricsのreplicationをしているページ](https://github.com/vikjam/mostly-harmless-replication)だそうです。
+というわけで、この記事を読んで「役に立ったなー」という方は(ietoolkitのGitHubページ)[https://github.com/worldbank/ietoolkit]にいって星を押しましょう。
 
 # どんなコマンドがあるの？
 
@@ -24,23 +25,36 @@
 - *iedropone* drops observations and controls that the correct number was dropped
 - *ieboilsave* performs checks before saving a data set
 
-訳してしまうと、
+ざっくり訳してしまうと、
 
 - *ietoolkit*: ietoolkitのメタ情報を返すコマンド、チーム内で同じバージョンを使ってるかチェックするのに使う
 - *iebaltab*: 処置群（複数でもOK）と統制群の間でちゃんとランダム化が行われているかチェック
 - *ieddtab*: 差の差分析の結果を表にしてくれる
 - *ieboilstart*: 全部のdoファイルの一番初めに「書いておくべきこと」を書いてくれる
 - *iefolder*: DIMEが考える「こういうフォルダ構成にすべき！」というのに従ってプロジェクトフォルダを作って、master do fileも用意してくれる
-- *iegitaddmd*: 空のフォルダにREADME.mdファイルを置いてくれる（これをしないと空のフォルダがGitHubで同期されないよ）
+- *iegitaddmd*: 空のフォルダにREADME.mdファイルを置いてくれる（これをしないと空のフォルダがGitHubで同期されない）
 - *iematch*: グループ間の似た者同士をマッチングする
 - *iegraph*: 推計結果をよくある感じのグラフにしてくれる
 - *iedropone*: drops observations and controls that the correct number was dropped
 - *ieboilsave*: データを保存する前にチェックしてくれる
 
-ってな感じですかね。
-
+ってな感じです。
+以下でコマンドの使用例を紹介するときには、(Impact Evaluation in Practice)[https://www.worldbank.org/en/programs/sief-trust-fund/publication/impact-evaluation-in-practice] で使われている Health Inusrance Subsidy Program (HISP) というデータを使います。
 
 ## ietoolkit
+
+このコマンドはietoolkitのパッケージのバージョンを教えてくれます。
+なので、
+```
+ietoolkit
+```
+と打つと、ぼくのPCではこんな感じででてきます：
+
+<img src="./Figures/ietoolkit/ietoolkit.png" width="400"/>
+
+例えば master do file のはじめに書いておいて、「このコードを回す人が
+
+
 
 
 
