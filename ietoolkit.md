@@ -31,7 +31,7 @@
 - *ieddtab*: 差の差分析の結果を表にしてくれる
 - *ieboilstart*: 全部のdoファイルの一番初めに「書いておくべきこと」を書いてくれる
 - *iefolder*: DIMEが考える「こういうフォルダ構成にすべき！」というのに従ってプロジェクトフォルダを作って、master do fileも用意してくれる
-- *iegitaddmd*: 空のフォルダにREADME.mdファイルを置いてくれる（これをしないと空のフォルダがGitHubで同期されない）
+- *iegitaddmd*: 空のフォルダにREADME.mdファイルを置いてくれる（これをしないと空のフォルダがGitHubで同期されないよ）
 - *iematch*: グループ間の似た者同士をマッチングする
 - *iegraph*: 推計結果をよくある感じのグラフにしてくれる
 - *iedropone*: drops observations and controls that the correct number was dropped
