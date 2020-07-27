@@ -75,10 +75,10 @@ else if `r(version)' < 5.0 {
 例えばHISPのデータを使って
 
 ```
-iebaltab age_hh age_sp educ_hh educ_sp, grpvar(treatment_locality) savetex("iebaltab.tex") replace
+iebaltab age_hh age_sp educ_hh educ_sp, grpvar(treatment_locality) savetex("iebaltab.tex") onerow texnotewidth(0.6) replace
 ```
 
-と打つと.texでアウトプットをセーブできて、こんな感じの表が作られます。
+と打つと.texで結果を保存できて、こんな感じの表が作られます(texnotewidthというオプションは表のフットノートの幅を設定するもので、これをうまく設定しないとちょっと見た目がダサくなります）。
 
 <img src="./Figures/ietoolkit/iebaltab.png" width="500"/>
 
@@ -91,17 +91,37 @@ iebaltab age_hh age_sp educ_hh educ_sp, grpvar(treatment_locality) savetex("ieba
 ちなみに、以下のようにアウトカムの変数（ここではhealth expenditure)を使うことで、「グループごとのアウトカムの平均はどれくらいか」をみて、介入の効果がどれくらいあったかを見せることもできますね。
 
 ```
-iebaltab health_expenditures, grpvar(treatment_locality) savetex("iebalteb_health.tex") replace
+iebaltab health_expenditures, grpvar(treatment_locality) savetex("iebalteb_health.tex") onerow texnotewidth(0.7) replace
 ```
 
-結果はこんな感じ
+結果はこんな感じ：
 
 <img src="./Figures/ietoolkit/iebaltab_health.png" width="500"/>
 
-これなら（多分上の表も）Standard errorよりStandard deviationのほうが見たい気はするけど、まあこういう使い方もできるということで。
-[この世銀のブログ](https://blogs.worldbank.org/impactevaluations/ie-analytics-introducing-ietoolkit)でも紹介されていますのでこちらもどうぞ。
+これならStandard errorよりStandard deviationのほうが見たい気がしますが、そういうときには stdev というオプションがあります。
+[この世銀のブログ](https://blogs.worldbank.org/impactevaluations/ie-analytics-introducing-ietoolkit)でもiebaltabは紹介されていますので、こちらもどうぞ。
 
 ## ieddtab
+
+これは差の差分析 (difference-in-differences) をして結果を出してくれます。
+例えば
+
+```
+ieddtab health_expenditures , t(round) treatment(treatment_locality) onerow
+```
+
+を走らせるとこんな表がStata上で出てきます：
+
+<img src="./Figures/ietoolkit/ieddtab.png" width="500"/>
+
+もちろん.texで結果を保存することもできます。
+こんな感じで出てきます：
+
+<img src="./Figures/ietoolkit/ieddtab_tex.png" width="500"/>
+
+このコマンドもオプションが豊富で、コントロール変数を加えたり標準誤差の計算方法を変えたりできます。
+いまのところは2×2のデザインにしか使えないみたいです。
+
 
 
 
