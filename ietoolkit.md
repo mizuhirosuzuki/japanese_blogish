@@ -3,7 +3,7 @@
 インターンをしてて気になったのでまとめてみました。
 もとのGitHubページは[ここ](https://github.com/worldbank/ietoolkit)です。
 
-要約してしまうと、ietoolkitは世銀のDIME Analyticsという部署が政策効果の測定のためにつくったStataのコマンド集みたいなものです。
+要約してしまうと、ietoolkitは世銀のDIME Analyticsという部署が政策効果の測定のためにつくったStataのコマンド集です。
 基本的には因果推論で使うことがあるコマンド、あとは「ちゃんとフォルダを管理しましょうね」「Git使ってますか？」的なお助けコマンドもあります。
 ちなみにietoolkitの双子の兄弟は[iefieldkit](https://github.com/worldbank/iefieldkit)で、これはフィールドワークの各過程で使える便利なコマンドを提供しているそう。
 さらにちなみに、ietoolkitはStataに関するGitHubのレポのなかで二番目に星の数が多いそう（2020年6月26日時点）で、一番多いのは[Mostly Harmless Econometricsのreplicationをしているページ](https://github.com/vikjam/mostly-harmless-replication)だそうです。
@@ -29,16 +29,16 @@
 - *ietoolkit*: ietoolkitのメタ情報を返すコマンド、チーム内で同じバージョンを使ってるかチェックするのに使う
 - *iebaltab*: 処置群（複数でもOK）と統制群の間でちゃんとランダム化が行われているかチェック
 - *ieddtab*: 差の差分析の結果を表にしてくれる
-- *ieboilstart*: 「はじめに設定しておくべきこと（例えば使える変数の数とかメモリとか）」を*いい感じに*設定しておいてくれる
+- *ieboilstart*: 「はじめに設定しておくべきこと（使える変数の数とかメモリとか）」を*いい感じに*設定しておいてくれる
 - *iefolder*: DIMEが考える「こういうフォルダ構成にすべき！」というのに従ってプロジェクトフォルダを作って、master do fileも用意してくれる
 - *iegitaddmd*: 空のフォルダにREADME.mdファイルを置いてくれる（これをしないと空のフォルダがGitHubで同期されない）
 - *iematch*: グループ間の似た者同士をマッチングする
 - *iegraph*: 推計結果をよくある感じのグラフにしてくれる
-- *iedropone*: drops observations and controls that the correct number was dropped
-- *ieboilsave*: データを保存する前にチェックしてくれる
+- *iedropone*: サンプルをデータから落とす、ただし「いくつのサンプルを落とすか」を前もって指定して、それと違う数のサンプルが落とされそうになったら教えてくれる
+- *ieboilsave*: データを保存する前にもろもろのチェックをしてくれる（例えば「ちゃんと一人ひとりにユニークなIDはありますか？」とか）
 
 ってな感じです。
-以下でコマンドの使用例を紹介するときには、[Impact Evaluation in Practice](https://www.worldbank.org/en/programs/sief-trust-fund/publication/impact-evaluation-in-practice)で使われている Health Inusrance Subsidy Program (HISP) というデータを使います。
+以下で分析用のコマンドの使用例を紹介するときには、[Impact Evaluation in Practice](https://www.worldbank.org/en/programs/sief-trust-fund/publication/impact-evaluation-in-practice)で使われている Health Inusrance Subsidy Program (HISP) というデータを使います。
 ただの例として使うだけなので、出力結果やもろもろの分析方法については気にしないで、「ああ、これを回すとこういう感じの表とか図が出てくるのね」くらいの感じでお楽しみください。
 
 ## ietoolkit
@@ -183,8 +183,71 @@ GitHubはフォルダに何のファイルも保存されてないからっぽ�
 そういうことがないように、iegitaddmdというコマンドは空のフォルダに「適当なファイル」を入れておいてくれます。
 この「適当なファイル」は README.md なので実はあまり適当ではなくて、どこかのタイミングでここに「このフォルダの目的」みたいなものを書いておくのがいいです。
 
-ちなみにデフォルトの README.md は[こんな感じ](./Figures/ietoolkit/README.md)：
+コマンドとしては
 
+```
+iegitaddmd, folder(/Path/to/Projectfolder)
+```
 
+という感じです。
+ちなみにデフォルトの README.md は[こんな感じ](./Figures/ietoolkit/README.md)。
 
+## iematch
+
+これは指定した変数をもとに「統制群の人に似た人を介入群から連れてくる」コマンドです。
+「使う？」と聞かれると「…」となるので、とりあえず「こういうのもあるよ」という紹介だけ…
+
+## iegraph
+
+これは回帰分析の結果をもとに「統制群のアウトカム ＋ 介入効果」を計算して、統制群のアウトカムと合わせて棒グラフにしたものです。
+ちょっとこの辺の言葉遣いや解釈はうっかり地雷を踏みかねないので、単に結果だけ…
+
+```
+reg health_expenditures treatment_locality
+iegraph treatment_locality , yscale(r(0 30)) ylabel(0(5)30)
+```
+
+で↓みたいなグラフが出てきます：
+
+<img src="./Figures/ietoolkit/iegraph.png?" width="500"/>
+
+Stataっぽい図ですね…
+コマンド1行目の回帰分析でコントロール変数を加えたりクラスター標準誤差を使ったり、いろいろできます。
+
+## iedropone
+
+これはStataの drop コマンドと同じように特定のサンプルをデータから落とすために使います。
+ただし違いは「いくつのサンプルを落とすか」を指定する点で、例えば「Household IDが123456の家計を1つ落とします」として、Household IDが123456の家計が2つあったら、「なんか変だよ！」と教えてくれます。
+使い方としては、例えばHousehold IDが123456の家計のデータに問題があったとき、Aさんは「よし、これはデータから落とそう」ということで "drop if hhid == 123456" と書いて、Bさんは「これはIDを999999にしよう」ということで "replace hhid = 999999 if hhid == 123456" と書いてしまうと、Aさんのコードを回したときにStataは「ん、hhidが123456の人はいないね、じゃあ次いきまーす」とエラーメッセージを吐かずにずんずん進んでいってしまいます。
+でも、 ”iedropone if hhid == 123456, numobs(1)" としておけば、「このコマンドで1つのサンプルが落とされないとエラーを出しますよ」ということになるので、プログラムはちゃんと止まってくれます。
+ちょっと使い所はむずかしい気もするけど、フィールドワーク中とかには大事なのかもしれないですね。
+
+## ieboilsave
+
+このコマンドは、データを保存する前に「このデータ、ひとつひとつのサンプルにユニークなIDが与えられていますか？」をチェックしてくれます（他にも機能はあるけど、これが一番大事）。
+例えば農家家計調査でプロット単位のデータだったら、「家計−プロット」ごとにユニークなIDを定義しましょう、ということです。
+「家計IDとプロットIDでユニークに特定できるんだからいいじゃん」というのもベストプラクティスではないようです（mergeの時とかに困るからかな）。
+
+例えばHISPのデータでは、各家計が2ラウンドで調査されているので、「家計−ラウンド」でユニークなIDを作れますね。
+なので、
+
+```
+gen str5 hhid_str = string(household_identifier, "%05.0f")
+gen str1 round_str = string(round, "%01.0f")
+gen unique_id = hhid_str + round_str
+```
+
+でユニークなID unique_id を作って、
+
+```
+ieboilsave, idvarname(unique_id) missingok
+```
+
+でエラーメッセージが出ないかチェックします。
+missingok というオプションは、「本来は欠損値を単に "." とするんじゃなくて、欠損の理由に合わせて ".a", ".b", ... とするのがベストプラクティスだけど、まあそれは時間かかるしOKとしましょう」、というものです。
+
+# おわりに
+
+今あるコマンドは以上ですが、DIME Analyticsでは今あるコマンドの改良＋新しいコマンドの開発を進めているようです。
+というわけで、ちょっとでも役に立ったなーという方は[ietoolkitのGitHubページ](https://github.com/worldbank/ietoolkit)にいって星を押しましょう。
 
