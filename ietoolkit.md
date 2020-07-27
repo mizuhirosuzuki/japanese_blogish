@@ -29,7 +29,7 @@
 - *ietoolkit*: ietoolkitのメタ情報を返すコマンド、チーム内で同じバージョンを使ってるかチェックするのに使う
 - *iebaltab*: 処置群（複数でもOK）と統制群の間でちゃんとランダム化が行われているかチェック
 - *ieddtab*: 差の差分析の結果を表にしてくれる
-- *ieboilstart*: 全部のdoファイルの一番初めに「書いておくべきこと」を書いてくれる
+- *ieboilstart*: 「はじめに設定しておくべきこと（例えば使える変数の数とかメモリとか）」を設定しておいてくれる
 - *iefolder*: DIMEが考える「こういうフォルダ構成にすべき！」というのに従ってプロジェクトフォルダを作って、master do fileも用意してくれる
 - *iegitaddmd*: 空のフォルダにREADME.mdファイルを置いてくれる（これをしないと空のフォルダがGitHubで同期されない）
 - *iematch*: グループ間の似た者同士をマッチングする
@@ -112,7 +112,7 @@ ieddtab health_expenditures , t(round) treatment(treatment_locality) onerow
 
 を走らせるとこんな表がStata上で出てきます：
 
-<img src="./Figures/ietoolkit/ieddtab.png?" width="500"/>
+<img src="./Figures/ietoolkit/ieddtab.png?" width="700"/>
 
 もちろん.texで結果を保存することもできます。
 こんな感じで出てきます：
@@ -121,6 +121,24 @@ ieddtab health_expenditures , t(round) treatment(treatment_locality) onerow
 
 このコマンドもオプションが豊富で、コントロール変数を加えたり標準誤差の計算方法を変えたりできます。
 いまのところは2×2のデザインにしか使えないみたいです。
+
+## ieboilstart
+
+do fileのはじめに、読み込める変数の上限を設定するために "set maxvar 15000" って書いたりしますよね。
+この ieboilstart っていうコマンドは、 *ベストプラクティス* な設定を勝手にしてくれます。
+
+例えば
+
+```
+ieboilstart, versionnumber(15.0)
+```
+
+と打つと、こんなメッセージが出てきます：
+
+<img src="./Figures/ietoolkit/ieboilstart.png?" width="500"/>
+
+このコマンドのあとに "`r(version)'" と書いておけば、バージョンも 15.0 として設定されます。
+
 
 
 
