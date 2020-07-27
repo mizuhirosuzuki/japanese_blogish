@@ -4,10 +4,10 @@
 もとのGitHubページは[ここ](https://github.com/worldbank/ietoolkit)です。
 
 要約してしまうと、ietoolkitは世銀のDIME Analyticsという部署が政策効果の測定のためにつくったStataのコマンド集みたいなものです。
-基本的には因果推論で使うことがあるコマンド、あとは「ちゃんとフォルダを管理しましょうね」「Git使ってますか？」的なお助けコマンドもあるよ。
-ちなみにietoolkitの双子の兄弟は[iefieldkit](https://github.com/worldbank/iefieldkit)で、これはフィールドワークの各過程で便利なコマンドを提供しているそう。
+基本的には因果推論で使うことがあるコマンド、あとは「ちゃんとフォルダを管理しましょうね」「Git使ってますか？」的なお助けコマンドもあります。
+ちなみにietoolkitの双子の兄弟は[iefieldkit](https://github.com/worldbank/iefieldkit)で、これはフィールドワークの各過程で使える便利なコマンドを提供しているそう。
 さらにちなみに、ietoolkitはStataに関するGitHubのレポのなかで二番目に星の数が多いそう（2020年6月26日時点）で、一番多いのは[Mostly Harmless Econometricsのreplicationをしているページ](https://github.com/vikjam/mostly-harmless-replication)だそうです。
-というわけで、この記事を読んで「役に立ったなー」という方は(ietoolkitのGitHubページ)[https://github.com/worldbank/ietoolkit]にいって星を押しましょう。
+というわけで、この記事を読んで「役に立ったなー」という方は[ietoolkitのGitHubページ](https://github.com/worldbank/ietoolkit)にいって星を押しましょう。
 
 # どんなコマンドがあるの？
 
@@ -175,6 +175,16 @@ iefolder new unitofobs household, projectfolder("ProjectABC")
 
 あとはラウンドごと（ベースライン、ミッドライン、エンドライン）のデータ収集、異なる単位（村、家計、個人）でのデータ収集など、いろいろなケースに合わせてサブフォルダを作ってプロジェクトフォルダをきれいに管理するのをお手伝いしてくれるみたいです。
 この辺も機能がたくさんあるので、詳しくはヘルプファイルか[こちら](https://dimewiki.worldbank.org/wiki/Iefolder)までどうぞ。
+
+## iegitaddmd
+
+GitHubはフォルダに何のファイルも保存されてないからっぽの状態だと、そのフォルダを同期してくれない困ったさんなんですね。
+なので、ある人が「このコードを回してこのファイルをこのフォルダに保存しておこーっと」といっても、そのフォルダが空っぽだとGitHubはそれを無視してしまうので、別の人がそのコードを回したときに「は？そんなフォルダねーよ」というエラーメッセージに泣かされてしまいます。
+そういうことがないように、iegitaddmdというコマンドは空のフォルダに「適当なファイル」を入れておいてくれます。
+この「適当なファイル」は README.md なので実はあまり適当ではなくて、どこかのタイミングでここに「このフォルダの目的」みたいなものを書いておくのがいいです。
+
+ちなみにデフォルトの README.md は[こんな感じ](./Figures/ietoolkit/README.md)：
+
 
 
 
