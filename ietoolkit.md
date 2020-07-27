@@ -154,8 +154,27 @@ iefolder new project, projectfolder("ProjectABC")
 
 <img src="./Figures/ietoolkit/iefolder1.png?" width="700"/>
 
+この時点では *EncrypteData* と *MasterData* のフォルダはからっぽ。
+*Project_MasterDofile.do* は master do file のいい例になってます。
+*global_setup.do* はいろいろなグローバルな設定＝複数のファイルで使う設定をしておく場所で、「ポンドからキロ」「エーカーからヘクタール」などの変換の設定がしてあるところがちょっとおもしろいです。
 
+で、つぎに「調査は家計単位」という場合には
 
+```
+iefolder new unitofobs household, projectfolder("ProjectABC")
+```
+
+を回すと↓みたいにフォルダが追加されます：
+
+<img src="./Figures/ietoolkit/iefolder2.png?" width="700"/>
+
+*EncryptedData* の中にはサンプルされる家計のリスト、介入を受ける家計のリスト、調査の結果得られたデータを保存しますが、これらは名前、住所、電話番号など超プライベートな情報（Personally Identifiable Information: PII)を含むので、ちゃんと暗号化して保存しましょう。
+このへんの情報は[こちら](https://dimewiki.worldbank.org/wiki/Master_Data_Set#Back_to_Parent)でざっくり説明されています。
+こういったデータからPIIを除いたもの(de-identified data)を *MasterData* に保存します。
+ちなみに、ここで出来た *Master household Encrypted* と *household* へのパスは勝手に *Project_MasterDofile.do* にグローバル変数として追加してくれます。
+
+あとはラウンドごと（ベースライン、ミッドライン、エンドライン）のデータ収集、異なる単位（村、家計、個人）でのデータ収集など、いろいろなケースに合わせてサブフォルダを作ってプロジェクトフォルダをきれいに管理するのをお手伝いしてくれるみたいです。
+この辺も機能がたくさんあるので、詳しくはヘルプファイルか[こちら](https://dimewiki.worldbank.org/wiki/Iefolder)までどうぞ。
 
 
 
