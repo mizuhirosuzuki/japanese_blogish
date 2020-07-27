@@ -39,6 +39,7 @@
 
 ってな感じです。
 以下でコマンドの使用例を紹介するときには、[Impact Evaluation in Practice](https://www.worldbank.org/en/programs/sief-trust-fund/publication/impact-evaluation-in-practice)で使われている Health Inusrance Subsidy Program (HISP) というデータを使います。
+ただの例として使うだけなので、出力結果やもろもろの分析方法については気にしないで、「ああ、これを回すとこういう感じの表とか図が出てくるのね」くらいの感じでお楽しみください。
 
 ## ietoolkit
 
@@ -49,7 +50,7 @@ ietoolkit
 ```
 と打つと、ぼくのPCではこんな感じででてきます：
 
-<img src="./Figures/ietoolkit/ietoolkit.png" width="800"/>
+<img src="./Figures/ietoolkit/ietoolkit.png" width="500"/>
 
 例えば master do file のはじめに書いておいて、「このコードを回す人のPCではにちゃんとietoolkitインストールされてますか？」とか「ちょっとバージョン古すぎますよ、アップデートしたほうがいいんじゃないですか？」みたいな確認ができます。
 (ちなみに master do file については[ここ](https://dimewiki.worldbank.org/wiki/Master_Do-files) に詳しく書いてあるし、[これ](https://www.poverty-action.org/publication/ipas-best-practices-data-and-code-management)にもちらっと書かれています。)
@@ -74,21 +75,54 @@ else if `r(version)' < 5.0 {
 例えばHISPのデータを使って
 
 ```
-iebaltab age_hh age_sp educ_hh educ_sp, grpvar(treatment_locality) savetex("iebalteb.tex") replace
+iebaltab age_hh age_sp educ_hh educ_sp, grpvar(treatment_locality) savetex("iebaltab.tex") onerow texnotewidth(0.6) replace
 ```
 
-と打つと.texでアウトプットをセーブできて、こんな感じの表が作られます。
+と打つと.texで結果を保存できて、こんな感じの表が作られます(texnotewidthというオプションは表のフットノートの幅を設定するもので、これをうまく設定しないとちょっと見た目がダサくなります）。
 
+<img src="./Figures/ietoolkit/iebaltab.png" width="500"/>
+
+ややフォーマットが気になりますが（T-testではなく$t$-testのほうがいいのでは…？とか）、少なくとも内部で結果を手早く共有したりするのには便利そう。
+ちなみに、個人的に気になったフォーマットについては、GitHubのレポをフォークして、自分で編集して、プルリクエストをする予定です。
+このレポのIssuesを見てみるとわかるのですが、DIME Analyticsの人たちはユーザーからのフィードバックにすごく丁寧に対応してくれて、こっちの提案も結構受け入れてくれます。
+いい人たちや…
 
 このコマンドはオプションがたくさんあって、例えば「固定効果をコントロールした上でどれくらいグループ間の差があるか」「クラスター標準誤差をつかったら差は統計的に有意か」などなど、いろんなことができます。
 ちなみに、以下のようにアウトカムの変数（ここではhealth expenditure)を使うことで、「グループごとのアウトカムの平均はどれくらいか」をみて、介入の効果がどれくらいあったかを見せることもできますね。
 
 ```
-iebaltab health_expenditures, grpvar(treatment_locality) savetex("iebalteb_outcome.tex") replace
+iebaltab health_expenditures, grpvar(treatment_locality) savetex("iebalteb_health.tex") onerow texnotewidth(0.7) replace
 ```
 
-結果はこんな感じ
+結果はこんな感じ：
 
-[この世銀のブログ](https://blogs.worldbank.org/impactevaluations/ie-analytics-introducing-ietoolkit)でも紹介されていますのでこちらもどうぞ。
+<img src="./Figures/ietoolkit/iebaltab_health.png" width="500"/>
+
+これならStandard errorよりStandard deviationのほうが見たい気がしますが、そういうときには stdev というオプションがあります。
+[この世銀のブログ](https://blogs.worldbank.org/impactevaluations/ie-analytics-introducing-ietoolkit)でもiebaltabは紹介されていますので、こちらもどうぞ。
+
+## ieddtab
+
+これは差の差分析 (difference-in-differences) をして結果を出してくれます。
+例えば
 
 ```
+ieddtab health_expenditures , t(round) treatment(treatment_locality) onerow
+```
+
+を走らせるとこんな表がStata上で出てきます：
+
+<img src="./Figures/ietoolkit/ieddtab.png" width="500"/>
+
+もちろん.texで結果を保存することもできます。
+こんな感じで出てきます：
+
+<img src="./Figures/ietoolkit/ieddtab_tex.png" width="500"/>
+
+このコマンドもオプションが豊富で、コントロール変数を加えたり標準誤差の計算方法を変えたりできます。
+いまのところは2×2のデザインにしか使えないみたいです。
+
+
+
+
+
