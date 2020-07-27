@@ -50,7 +50,7 @@ ietoolkit
 ```
 と打つと、ぼくのPCではこんな感じででてきます：
 
-<img src="./Figures/ietoolkit/ietoolkit.png" width="500"/>
+<img src="./Figures/ietoolkit/ietoolkit.png?" width="500"/>
 
 例えば master do file のはじめに書いておいて、「このコードを回す人のPCではにちゃんとietoolkitインストールされてますか？」とか「ちょっとバージョン古すぎますよ、アップデートしたほうがいいんじゃないですか？」みたいな確認ができます。
 (ちなみに master do file については[ここ](https://dimewiki.worldbank.org/wiki/Master_Do-files) に詳しく書いてあるし、[これ](https://www.poverty-action.org/publication/ipas-best-practices-data-and-code-management)にもちらっと書かれています。)
@@ -80,7 +80,7 @@ iebaltab age_hh age_sp educ_hh educ_sp, grpvar(treatment_locality) savetex("ieba
 
 と打つと.texで結果を保存できて、こんな感じの表が作られます(texnotewidthというオプションは表のフットノートの幅を設定するもので、これをうまく設定しないとちょっと見た目がダサくなります）。
 
-<img src="./Figures/ietoolkit/iebaltab.png" width="500"/>
+<img src="./Figures/ietoolkit/iebaltab.png?" width="500"/>
 
 ややフォーマットが気になりますが（T-testではなく$t$-testのほうがいいのでは…？とか）、少なくとも内部で結果を手早く共有したりするのには便利そう。
 ちなみに、個人的に気になったフォーマットについては、GitHubのレポをフォークして、自分で編集して、プルリクエストをする予定です。
@@ -96,7 +96,7 @@ iebaltab health_expenditures, grpvar(treatment_locality) savetex("iebalteb_healt
 
 結果はこんな感じ：
 
-<img src="./Figures/ietoolkit/iebaltab_health.png" width="500"/>
+<img src="./Figures/ietoolkit/iebaltab_health.png?" width="500"/>
 
 これならStandard errorよりStandard deviationのほうが見たい気がしますが、そういうときには stdev というオプションがあります。
 [この世銀のブログ](https://blogs.worldbank.org/impactevaluations/ie-analytics-introducing-ietoolkit)でもiebaltabは紹介されていますので、こちらもどうぞ。
@@ -112,12 +112,12 @@ ieddtab health_expenditures , t(round) treatment(treatment_locality) onerow
 
 を走らせるとこんな表がStata上で出てきます：
 
-<img src="./Figures/ietoolkit/ieddtab.png" width="500"/>
+<img src="./Figures/ietoolkit/ieddtab.png?" width="500"/>
 
 もちろん.texで結果を保存することもできます。
 こんな感じで出てきます：
 
-<img src="./Figures/ietoolkit/ieddtab_tex.png" width="500"/>
+<img src="./Figures/ietoolkit/ieddtab_tex.png?" width="500"/>
 
 このコマンドもオプションが豊富で、コントロール変数を加えたり標準誤差の計算方法を変えたりできます。
 いまのところは2×2のデザインにしか使えないみたいです。
