@@ -167,4 +167,30 @@ Intensityの人とZoomで15分ほど話す。
 けっこう自分の研究とか経験とかキャリアプランとかについて聞かれた。
 あとはこちらからもいくつか質問。
 
+明日のLancasterとの面接の準備。
+Spielを練習したり、想定される質問の答えを見直したり。
+
+## 12月3日（金）
+
+朝の7時半からLancaster Universityと面接。
+夜10時に寝て朝5時半に起きようと思ってたけど、緊張で1時に起きてそのあと寝れなかった。
+ので面接の時点でけっこう眠かった。
+
+面接に参加した3人のうち、2人は事前に知らされていた人で、1人は違う人だった。
+リスケジュールしてもらった関係だとおもう。
+面接は30分。
+
+まだLancaster University以外の大学からなんの連絡もない。
+他の人はどうなんだろう、気になるけど聞きづらい。
+かなり心配である。
+
+## 12月4日（土）
+
+Googleとの面接に備えて統計、機械学習、計量の教科書をざっとレビュー。
+統計は Casella & Berger のStatistical inference、機械学習は Python Machine Learning がメインでPRMLも少し、計量はWooldridge（duration analysisだけ）。
+
+## 12月5日（日）
+
+民間企業でありそうな質問をネットで探して、それの答えを準備。
+An Introduction to Statistical Learning with Applications in Rも使って面接の準備。
 
