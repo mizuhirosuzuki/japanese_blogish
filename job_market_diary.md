@@ -250,6 +250,6 @@ UTEconからインタビューしましょうとの連絡。
 1時から先生2人とMock interview、あんまりうまくいかなかった。
 けっこう先生ごとにconflictingな提案をされたりするので、注意深く聞かないといけないですね。
 
-
+Old Dominion Universityからお祈りメール。
 
 
