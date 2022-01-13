@@ -632,6 +632,26 @@ Lazadaから、13日のインタビューの詳細が送られてくる。
 
 Colby Collegeからお祈りメール。
 
+# 1月12日（水）
+
+Revelio Labsからまたお話しましょうとの連絡。
+来週火曜（18日）の午後1時から、一応2時間ほどと言われた。
+CEO、Data scientist、Economistの三人と話すそうな。
+
+# 1月13日（木）
+
+朝8時からCapital Oneと面接。
+疲れた…
+全体的に悪かったけど、特にCoding interviewがうまくいかなかったな。
+結構得意だと思ってたんだけど、毎回インタビューではうまくいかない。
+練習不足かしら。
+しょうがない、切り替え切り替え。
+
+briq (Institute on Behavior & Inequality) からお祈りメール。
+
+
+
+
 
 
 
