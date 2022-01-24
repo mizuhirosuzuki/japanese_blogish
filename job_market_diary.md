@@ -703,7 +703,7 @@ Revelio Labsからお祈りメール。
 Twitterから「遅くなってごめんね、とりあえず書類のスクリーニングは通ったから、もしまだ興味あったらTake-home challengeやって」という連絡。
 もはやいつ応募したかも覚えてない…（多分11月くらい？）
 メールの中に「12月23日から1月3日までは返事できないからよろしく」とか書いてあったので、多分すでにめぼしい人には連絡をとってて、人数調整で私の方にも遅れて連絡がきたという感じかしら。
-Revelio落とされた怒りをtake-home challengeにぶつけて即終わらせた。
+Revelioに落とされた怒りをtake-home challengeにぶつけて即終わらせた。
 
 ## 1月20日（木）
 
@@ -717,9 +717,19 @@ Twitterのtake-home challengeを提出。
 
 ## 1月21日（金）
 
-Twitterからtake-home challengeはパスして、次はmanagerと話してという連絡。
+Twitterからtake-home challengeはパスしたから、次はmanagerと話してという連絡。
 候補日を提出。
 
 
+## 1月24日（月）
+
+GiveWellの課題を提出。
+かなり遅れてしまった…
+
+East Angliaからお祈りメール。
+Analysis Groupからお祈りメール。
+ぐぬぬ…
+
+UTEconから二次面接に進ませてもらえるとの連絡。
 
 
