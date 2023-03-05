@@ -45,7 +45,7 @@ DIME Analyticsの提供するStataコードの書き方の基準は[こちら](h
 ### Detection
 
 Detectionは、コード内のbad practiceを見つけてお知らせしてくれます。
-GitHubページにある例を使うと（本当は手元で実際にコードを試してみたかったのですが、私のStataライセンスが失効していて出来ませんでした。無念…）、例えばこのレポ内の[test/bad.do](https://github.com/worldbank/stata-linter/blob/master/test/bad.do)に対して
+GitHubのレポにある例を使うと（本当は手元で実際にコードを試してみたかったのですが、私のStataライセンスが失効していて出来ませんでした。無念…）、例えばこのレポ内の[test/bad.do](https://github.com/worldbank/stata-linter/blob/master/test/bad.do)に対して
 
 ```
 lint "test/bad.do"
