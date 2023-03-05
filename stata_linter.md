@@ -19,7 +19,7 @@ gen v_`i'=`i'^2
 foreach j of var y1 y2 y3 {
 gen v_`i'_j`=`v_`i'+`j'
 }
-replace v_`i'_`j'=v_`i'_`j'/v_`i'
+replace v_`i'=`i'*2
 }
 ```
 
@@ -31,7 +31,53 @@ replace v_`i'_`j'=v_`i'_`j'/v_`i'
 
 ## どうやって使うの？
 
+基本的には`ssc install stata_linter`でパッケージをインストールできます。
+ただし、裏ではPythonでStataのコードを（テキストファイルとして）処理しているので、Pythonのインストールと使われるパッケージのインストールも必要になります。
+詳しくは[こちら](https://github.com/worldbank/stata-linter#requirements)まで。
+
 ## なにができるの？
+
+主に”Detection”と”Correction”という２つの機能があります。
+
+### Detection
+
+Detectionは、コード内のbad practiceを見つけてお知らせしてくれます。
+GitHubページにある例を使うと（本当は手元で実際にコードを試してみたかったのですが、私のStataライセンスが失効していて出来ませんでした…）、例えばこのレポ内の[test/bad.do](https://github.com/worldbank/stata-linter/blob/master/test/bad.do)に対して
+
+```
+lint "test/bad.do"
+```
+
+とすると、
+
+-------------------------------------------------------------------------------------
+Bad practice                                                          Occurrences                   
+-------------------------------------------------------------------------------------
+Hard tabs used instead of soft tabs:                                  Yes       
+One-letter local name in for-loop:                                    3
+Non-standard indentation in { } code block:                           7
+No indentation on line following ///:                                 1
+Missing whitespaces around operators:                                 0
+Implicit logic in if-condition:                                       1
+Delimiter changed:                                                    1
+Working directory changed:                                            0
+Lines too long:                                                       5
+Global macro reference without { }:                                   0
+Use of . where missing() is appropriate:                              6
+Backslash detected in potential file path:                            0
+Tilde (~) used instead of bang (!) in expression:                     5
+-------------------------------------------------------------------------------------
+
+という感じで結果が出てきます。
+例えば１つ目は、「インデントにはTabじゃなくてSpaceを使いましょう（Tabだと設定によってスペース２つ分になったり４つ分になったりするので、コードが読みにくくなる可能性がある）」という基準に基づいて、コード内でTabが使われているかを教えてくれます。
+２つ目は、「`for loop`とかのlocal nameが`i'とか`x'だと何に対してループしてるのかわからないから、countryとかnameとか具体的な名前を使うべき」という基準に基づき、コード内の何箇所でアルファベット一文字の（無意味な）local nameがループに使われているか教えてくれます。
+（これらの項目に反対の人もいるでしょうが、上で言ったように、多くのスクリプトはこれらに従うことで読みやすくなると思います。）
+
+コードのどの部分に問題があるかを知りたい場合は、
+```
+lint "test/bad.do", verbose
+```
+とすればOKです。
 
 ## その他
 
