@@ -94,7 +94,7 @@ lint "test/bad.do" using "test/bad_corrected.do"
 ```
 とすると、`test/bad.do`の問題のある部分を直して、`test/bad_corrected.do`として保存してくれます。
 大事な点ですが、**常にオリジナルのスクリプトは保存しておくことと、correction後のファイルで元の結果が再現できることを確認することが強く推奨されています**。
-linterも完璧ではないので、correctionがうまくされず、元のスクリプトの結果と異なるものを出力してしますスクリプトになってしまうかもしれません。
+linterも完璧ではないので、correctionがうまくされず、元のスクリプトの結果と異なるものを出力してしまうスクリプトになってしまうかもしれません。
 なので、Correctionを過信しすぎず、常にCorrection前後の結果が整合的かをチェックする必要があります。
 アグレッシブにコードを直そうとすることでコードの意図を変えてしまうことを防ぐために、CorrectionはDetectionが指摘する問題点のうちのいくつかのみを直すものになっています（そのリストは[ここ](https://github.com/worldbank/stata-linter#coding-practices-to-be-corrected)）。
 
