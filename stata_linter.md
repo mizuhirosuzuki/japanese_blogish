@@ -126,12 +126,13 @@ if something ~= 1 & something != . {
 
 上に書いたように、Correctionはコードを直してくれるけど、バグを引き起こす可能性もはらんでいます。
 一方、Detectionはコードを自動で直してくれはしないけど、コードのどの部分を直せばいいかを教えてくれます。
-それを踏まえて、おすすめのワークフローが[ここに書かれています](https://github.com/worldbank/stata-linter#recommended-use):
+それを踏まえて、おすすめのワークフローが[ここに書かれています](https://github.com/worldbank/stata-linter#recommended-use)。
 まとめると、
 1. まずDetectionをつかってどのくらい問題があるかを見てみる
 2. もしそんなに問題がないようだったら、手動でコードを直す
 3. もしたくさん問題点がみつかったら、Correctionを使ってコードを直すけど、出力結果が変わらないことはチェックする。
 4. もう一度Detectionを使って、どれくらいの問題点が残っているかを確認し、その問題点を手動で直す
+
 という感じです。
 
 ### バグの報告
