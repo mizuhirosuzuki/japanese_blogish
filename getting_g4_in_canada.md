@@ -32,8 +32,8 @@ With the exception of dependent A-1/A-2 visa holders, U.S. immigration regulatio
 4. そのページにはさらに"Eligible staff may start work at WBG HQ while the request is being processed with the US State Department, but this process can only be initiated after your start date at the WBG. This change of visa status process will take 16 – 24 weeks to complete."と書いてある
 
 これらの情報から、「おそらくアメリカ国内でビザの変更の更新はできるし、そのプロセスが進んでいる間に妻は世銀で働けるだろうけど、それが上手くいくかは不確実だし、時間がすごくかかる」という私達は判断しました。
-（重ねて、これは単に私達の判断で、より確かな情報が欲しい人は弁護士等に相談するべきだと思います。）
-早くビザの変更が完了しないと私の職場復帰が遅れてしまうので、私達はアメリカ国外でビザの変更をすることにしました。
+（念のため、これは単に私達の判断で、より確かな情報が欲しい人は弁護士等に相談するべきだと思います。）
+早くビザの変更が完了しないと私の職場復帰も遅れてしまうので、私達はアメリカ国外でビザの変更をすることにしました。
 
 ### 日本に帰らないといけないのか否か問題
 
