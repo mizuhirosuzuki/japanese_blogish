@@ -77,7 +77,8 @@ HPには「リストにないビザの申請についてはカスタマーサー
 あと、Bridgeheadというコーヒーチェーンはマフィンもコーヒーも美味しいです。
 このカフェの近くに滞在できたのは本当にラッキーでした。
 
-### その他のその他
+### 私のお仕事
 
 G4を持ってアメリカに帰ってきたのですが、私はまだ働くことはできません。
-
+また働けるようになるためにはEmployment Authorization Cardを手に入れる必要があります（詳しくは[こちら](https://www.worldbank.org/en/about/unit/human-resources/request-or-renew-employment-authorization-card?cq_ck=1553199953625)）。
+このプロセスには数ヶ月かかることもあるようなので、その間は私は仕事を休職しています。
